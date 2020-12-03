@@ -1,4 +1,4 @@
-public class MyNode<K> implements INode<K>, Comparable {
+public class MyNode<K> implements INode<K> {
 
     private INode next;
     private K key;
@@ -26,8 +26,5 @@ public class MyNode<K> implements INode<K>, Comparable {
         this.next=null;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
+
 }

@@ -1,6 +1,6 @@
 public class MyLinkedList<K extends Comparable<K>> {
-    public static INode head;
-    public static INode tail;
+    public INode head;
+    public INode tail;
     public K key;
 
 
@@ -68,7 +68,7 @@ public class MyLinkedList<K extends Comparable<K>> {
         return tempNode;
     }
 
-    public  INode search(K key ) {
+    public  INode search(INode key ) {
         INode tempNode=this.head;
         while (tempNode!=null){
             if(tempNode.equals(key)){
@@ -79,11 +79,11 @@ public class MyLinkedList<K extends Comparable<K>> {
         return null;
     }
 
-    public void insertInMiddle(K key,INode newNode){
+    public void insertInMiddle(INode key,INode newNode){
         insert(search(key),newNode);
     }
 
-    public void deleteInMiddle(K key){
+    public void deleteInMiddle(INode key){
         INode tempNode=this.head;
         while (!tempNode.getNext().equals(key)){
             tempNode=tempNode.getNext();
@@ -99,6 +99,24 @@ public class MyLinkedList<K extends Comparable<K>> {
             tempNode=tempNode.getNext();
         }
         return size;
+    }
+
+    public void addInAscendingOrder(INode<K> newNode) {
+        if(this.head==null){
+            this.head=newNode;
+        } else if(((Comparable<K>)this.head.getKey()).compareTo(newNode.getKey()) > 0) {
+            newNode.setNext(head);
+            this.head = newNode;
+        } else {
+            INode<K> tempNode = this.head;
+            while(tempNode.getNext() != null && ((Comparable<K>) tempNode.getNext().getKey()).compareTo(newNode.getKey()) < 0){
+                tempNode = tempNode.getNext();
+            }
+            newNode.setNext(tempNode.getNext());
+            tempNode.setNext(newNode);
+        }
+        System.out.println("Ascending order : ");
+        PrintMyNodes();
     }
 }
 

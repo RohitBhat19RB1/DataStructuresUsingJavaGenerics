@@ -24,9 +24,9 @@ public class LinkedListTest {
         linkedList.add(myFirstNode);
         linkedList.add(mySecondNode);
         linkedList.add(myThirdNode);
-        boolean result=MyLinkedList.head.equals(myThirdNode)&&
-                MyLinkedList.head.getNext().equals(mySecondNode)&&
-                MyLinkedList.tail.equals(myFirstNode);
+        boolean result=linkedList.head.equals(myThirdNode)&&
+                linkedList.head.getNext().equals(mySecondNode)&&
+                linkedList.tail.equals(myFirstNode);
         Assert.assertTrue(result);
         linkedList.PrintMyNodes();
     }
@@ -41,8 +41,8 @@ public class LinkedListTest {
         linkedList.append(mySecondNode);
         linkedList.append(myThirdNode);
         linkedList.PrintMyNodes();
-        boolean result=MyLinkedList.head.equals(myFirstNode)&&
-                MyLinkedList.head.getNext().equals(mySecondNode)&&
+        boolean result=linkedList.head.equals(myFirstNode)&&
+                linkedList.head.getNext().equals(mySecondNode)&&
                 mySecondNode.getNext().equals(myThirdNode);
         Assert.assertTrue(result);
         linkedList.PrintMyNodes();
@@ -94,6 +94,7 @@ public class LinkedListTest {
         boolean result=linkedList.head.equals(myFirstNode)&&
                 linkedList.tail.equals(mySecondNode);
         Assert.assertTrue(result);
+        linkedList.PrintMyNodes();
     }
 
     @Test
@@ -105,7 +106,7 @@ public class LinkedListTest {
         linkedList.add(myFirstNode);
         linkedList.append(mySecondNode);
         linkedList.append(myThirdNode);
-        INode<Integer> searchNode=linkedList.search((Comparable) mySecondNode);
+        INode<Integer> searchNode=linkedList.search(mySecondNode);
         Assert.assertEquals(mySecondNode,searchNode);
     }
 
@@ -138,12 +139,30 @@ public class LinkedListTest {
         linkedList.append(mySecondNode);
         linkedList.append(myThirdNode);
         linkedList.append(myFourthNode);
-        linkedList.deleteInMiddle((Comparable) myThirdNode);
+        linkedList.deleteInMiddle(myThirdNode);
         boolean result=linkedList.head.equals(myFirstNode)&&
                 linkedList.head.getNext().equals(mySecondNode);
         linkedList.tail.equals(myFourthNode);
         Assert.assertTrue(result);
         linkedList.PrintMyNodes();
+    }
+
+    @Test
+    public void givenFourNumbers_WhenAddedInLinkedList_ShouldAddedInAscendingOrder() {
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(40);
+        MyNode<Integer> myFourthNode = new MyNode<>(70);
+        linkedList.addInAscendingOrder(myFirstNode);
+        linkedList.addInAscendingOrder(mySecondNode);
+        linkedList.addInAscendingOrder(myThirdNode);
+        linkedList.addInAscendingOrder(myFourthNode);
+        boolean result = linkedList.head.equals(mySecondNode) &&
+                linkedList.head.getNext().equals(myThirdNode) &&linkedList.head.getNext().getNext().equals(myFirstNode)
+                &&linkedList.head.getNext().getNext().getNext().equals(myFourthNode);
+        Assert.assertTrue(result);
+
     }
 
 }
