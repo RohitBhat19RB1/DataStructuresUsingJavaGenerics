@@ -27,7 +27,7 @@ public class MyLinkedList<K> {
         INode tempNode=head;
         while (tempNode.getNext()!=null){
             myNodes.append(tempNode.getKey());
-            if(tempNode.equals(tail)) myNodes.append("->");
+            if(!tempNode.equals(tail)) myNodes.append("->");
             tempNode=tempNode.getNext();
         }
         myNodes.append(tempNode.getKey());
@@ -70,11 +70,11 @@ public class MyLinkedList<K> {
 
     public  INode search(K key ) {
         INode tempNode=this.head;
-        while (tempNode!=null && tempNode.getNext()!=null){
-            if(tempNode.getNext().equals(key)){
-                tempNode=tempNode.getNext();
+        while (tempNode!=null){
+            if(tempNode.equals(key)){
                 return tempNode;
             }
+            tempNode = tempNode.getNext();
         }
         return null;
     }
@@ -83,6 +83,22 @@ public class MyLinkedList<K> {
         insert(search(key),newNode);
     }
 
-
+    public void deleteInMiddle(K key,INode previous){
+        INode tempNode=this.head;
+        while (!tempNode.getNext().equals(key)){
+            tempNode=tempNode.getNext();
+        }
+        tempNode.setNext(tempNode.getNext().getNext());
+        System.out.println("size of linklist:"+size());
+    }
+    public int size(){
+        INode tempNode=this.head;
+        int size=0;
+        while (tempNode!=null){
+            size++;
+            tempNode=tempNode.getNext();
+        }
+        return size;
+    }
 }
 

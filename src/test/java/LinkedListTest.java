@@ -125,4 +125,23 @@ public class LinkedListTest {
         linkedList.PrintMyNodes();
     }
 
+    @Test
+    public void given4NumbersWhenDeletingMiddleShuoldPassTheresult(){
+        MyNode<Integer> myFirstNode=new MyNode<>(56);
+        MyNode<Integer> mySecondNode=new MyNode<>(30);
+        MyNode<Integer> myThirdNode=new MyNode<>(40);
+        MyNode<Integer> myFourthNode=new MyNode<>(70);
+        MyLinkedList linkedList=new MyLinkedList();
+        linkedList.add(myFirstNode);
+        linkedList.append(mySecondNode);
+        linkedList.append(myThirdNode);
+        linkedList.append(myFourthNode);
+        linkedList.deleteInMiddle(myThirdNode,mySecondNode);
+        boolean result=linkedList.head.equals(myFirstNode)&&
+                linkedList.head.getNext().equals(mySecondNode);
+        linkedList.tail.equals(myFourthNode);
+        Assert.assertTrue(result);
+        linkedList.PrintMyNodes();
+    }
+
 }
