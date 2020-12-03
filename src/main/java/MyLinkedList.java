@@ -1,4 +1,4 @@
-public class MyLinkedList<K> {
+public class MyLinkedList<K extends Comparable<K>> {
     public static INode head;
     public static INode tail;
     public K key;
@@ -79,11 +79,11 @@ public class MyLinkedList<K> {
         return null;
     }
 
-    public void inserInmiddle(K key,INode newNode){
+    public void insertInMiddle(K key,INode newNode){
         insert(search(key),newNode);
     }
 
-    public void deleteInMiddle(K key,INode previous){
+    public void deleteInMiddle(K key){
         INode tempNode=this.head;
         while (!tempNode.getNext().equals(key)){
             tempNode=tempNode.getNext();

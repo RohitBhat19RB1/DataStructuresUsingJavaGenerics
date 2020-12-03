@@ -32,7 +32,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void given3NumbersWhenAddedToLinkedListShouldBeaddAtLast() {
+    public void given3Numbers_WhenAddedToLinkedList_ShouldBeAddedAtLast() {
         MyNode<Integer> myFirstNode=new MyNode<>(56);
         MyNode<Integer> mySecondNode=new MyNode<>(30);
         MyNode<Integer> myThirdNode=new MyNode<>(70);
@@ -67,7 +67,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void given3NumberswhenDeletingFirstElementShouldPassTheLinkedList(){
+    public void given3NumbersWhenDeletingFirstElementShouldPassTheLinkedList(){
         MyNode<Integer> myFirstNode=new MyNode<>(56);
         MyNode<Integer> mySecondNode=new MyNode<>(30);
         MyNode<Integer> myThirdNode=new MyNode<>(70);
@@ -105,7 +105,7 @@ public class LinkedListTest {
         linkedList.add(myFirstNode);
         linkedList.append(mySecondNode);
         linkedList.append(myThirdNode);
-        INode<Integer> searchNode=linkedList.search(mySecondNode);
+        INode<Integer> searchNode=linkedList.search((Comparable) mySecondNode);
         Assert.assertEquals(mySecondNode,searchNode);
     }
 
@@ -119,7 +119,7 @@ public class LinkedListTest {
         linkedList.add(myFirstNode);
         linkedList.append(mySecondNode);
         linkedList.append(myFourthNode);
-        linkedList.inserInmiddle(mySecondNode,myThirdNode);
+        linkedList.insertInMiddle(mySecondNode,myThirdNode );
         boolean result=linkedList.head.equals(myFirstNode)&&linkedList.head.getNext().equals(mySecondNode)&&
                 linkedList.head.getNext().getNext().equals(myThirdNode)&&
                 linkedList.tail.equals(myFourthNode);
@@ -128,7 +128,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void given4NumbersWhenDeletingMiddleShuoldPassTheresult(){
+    public void given4Numbers_WhenDeletingMiddle_ShouldPassTheResult(){
         MyNode<Integer> myFirstNode=new MyNode<>(56);
         MyNode<Integer> mySecondNode=new MyNode<>(30);
         MyNode<Integer> myThirdNode=new MyNode<>(40);
@@ -138,7 +138,7 @@ public class LinkedListTest {
         linkedList.append(mySecondNode);
         linkedList.append(myThirdNode);
         linkedList.append(myFourthNode);
-        linkedList.deleteInMiddle(myThirdNode,mySecondNode);
+        linkedList.deleteInMiddle((Comparable) myThirdNode);
         boolean result=linkedList.head.equals(myFirstNode)&&
                 linkedList.head.getNext().equals(mySecondNode);
         linkedList.tail.equals(myFourthNode);
