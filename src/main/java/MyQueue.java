@@ -22,4 +22,8 @@ public class MyQueue {
     public boolean isEmpty(){
         return myStack.IsEmpty();
     }
+
+    public void deQueue() {
+        myStack.emptyingTheStack();
+    }
 }
