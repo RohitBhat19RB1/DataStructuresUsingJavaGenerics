@@ -79,6 +79,10 @@ public class MyLinkedList<K> {
         return null;
     }
 
+    public void inserInmiddle(K key,INode newNode){
+        insert(search(key),newNode);
+    }
+
 
 }
 
