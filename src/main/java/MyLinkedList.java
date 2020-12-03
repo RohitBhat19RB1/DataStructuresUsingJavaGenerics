@@ -63,8 +63,8 @@ public class MyLinkedList<K> {
         while (!tempNode.getNext().equals(tail)){
             tempNode=tempNode.getNext();
         }
+        tempNode.setNext(null);
         this.tail=tempNode;
-        tempNode=tempNode.getNext();
         return tempNode;
     }
 
