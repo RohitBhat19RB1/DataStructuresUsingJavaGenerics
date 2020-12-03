@@ -25,8 +25,8 @@ public class MyStack {
         return myLinkedList.size();
     }
 
-    public void emptyingTheStack(int size){
-        for(int i=1;i<=size;i++){
+    public void emptyingTheStack(){
+        while (size()!=0){
             pop();
         }
     }
