@@ -1,3 +1,6 @@
+import java.util.Arrays;
+
+
 public class BinaryTree<K extends Comparable<K>> {
     private BinaryNode<K> root;
 
@@ -27,5 +30,24 @@ public class BinaryTree<K extends Comparable<K>> {
     public int getSizeRecursive(BinaryNode<K> current) {
         return current == null ? 0 : 1 + this.getSizeRecursive(current.left)
                 + this.getSizeRecursive(current.right);
+    }
+
+    public boolean searchNode(K key){
+        return search(root,key);
+    }
+
+    public  boolean search(BinaryNode current,K nodeToBeSearched){
+        if(current==null){
+            return false;
+        }if(current.key== nodeToBeSearched){
+            return true;
+        }
+        boolean result=false;
+        if(current.key.compareTo(nodeToBeSearched)>0){
+            result=search(current.left,nodeToBeSearched);
+        }else if(current.key.compareTo(nodeToBeSearched)<0){
+            result=search(current.right,nodeToBeSearched);
+        }
+        return result;
     }
 }

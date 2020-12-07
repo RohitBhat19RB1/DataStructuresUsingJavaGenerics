@@ -1,5 +1,6 @@
 
 public class BinaryNode<K extends Comparable<K>> {
+    public int value;
     K key;
     BinaryNode<K> left;
     BinaryNode<K> right;
